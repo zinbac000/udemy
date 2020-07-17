@@ -1,0 +1,15 @@
+.user-output {
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.45);
+  border-left: 10px solid rgb(53, 179, 42);
+}
+
+.user-output p {
+  margin: 0;
+}
+
+.user-output p:first-child {
+  font-size: 20px;
+  font-weight: bold;
+}
