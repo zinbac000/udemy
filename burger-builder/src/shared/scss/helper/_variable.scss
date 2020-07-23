@@ -1,0 +1,50 @@
+// ----------- COLORS ------------
+
+// BACKGROUND COLORS
+$bgColors: (
+  "bread": #915514,
+  "seed": #d4b968,
+  "meat": #57340a,
+  "salad": #0a570d,
+  "cheese": #d9c832,
+  "bacon": #db6c53
+);
+
+// TEXT COLORS
+$txtColors: (
+  "primary": #3c3b37,
+  "secondary": #0f7c90,
+  "white": #ffffff,
+  "grey": #73726c,
+  "score": #be5a0e,
+  "star": #eb8a2f,
+  "tag": #593d00,
+  "success": #6aa878,
+  "favorite": #094c59,
+  "linkHover": #003640
+);
+
+// ----------- FONT ------------
+
+// FONT SIZE
+$fSizes: (
+  "body1": 1.1875rem,
+  "body2": 1rem,
+  "title1": 0.875rem,
+  "title2": 1rem,
+  "h1": 3rem,
+  "h2": 2.5rem,
+  "h3": 2rem,
+  "h4": 1.75rem,
+  "h5": 1.5rem,
+  "h6": 1.25rem
+);
+
+// FONT WEIGHT
+$fWeights: (
+  "regular": 400,
+  "bold": 700
+);
+
+// SPACING
+$spacing: 10px;

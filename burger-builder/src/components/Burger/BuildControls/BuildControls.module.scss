@@ -1,0 +1,29 @@
+@import "../../../shared/scss/foundation";
+
+.BuildControls {
+  background-color: bc("bread");
+
+  margin-top: space(2);
+  padding: space(1) 0;
+
+  text-align: center;
+
+  &__Content {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: space(1.5) 0;
+
+    text-align: left;
+  }
+}
+
+.OrderButton {
+  @include button($fs: "h5", $fw: "regular", $color: "primary", $bgColor: "cheese", $py: 1, $px: 2);
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: tc("grey");
+    cursor: not-allowed;
+  }
+}

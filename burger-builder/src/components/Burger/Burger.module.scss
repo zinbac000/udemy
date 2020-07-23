@@ -1,0 +1,18 @@
+@import "../../shared/scss/foundation";
+
+.Burger {
+  max-width: 500px;
+  height: 350px;
+  margin: 0 auto;
+  padding: 0 space(1.5);
+
+  overflow: auto;
+
+  text-align: center;
+  font-weight: fw("bold");
+  font-size: fs("h6");
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

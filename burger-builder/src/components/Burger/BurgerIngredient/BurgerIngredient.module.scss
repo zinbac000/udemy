@@ -1,0 +1,93 @@
+@import "../../../shared/scss/foundation";
+
+.BreadTop {
+  position: relative;
+
+  height: 60px;
+  margin-bottom: space(0.5);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
+  background-color: bc("bread");
+}
+
+.Seed {
+  border-top: 9px solid bc("seed");
+  border-right: 9px solid transparent;
+  border-left: 9px solid transparent;
+  width: 0;
+}
+
+.Seeds1 {
+  @include pos($position: absolute, $top: 50%, $left: 25%);
+  @extend .Seed;
+
+  transform: rotate(20deg);
+
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+
+    @extend .Seed;
+  }
+
+  &::after {
+    @include pos($position: absolute, $top: -50px, $right: -70px);
+    transform: rotate(135deg);
+  }
+
+  &::before {
+    @include pos($position: absolute, $top: 20px, $left: -100px);
+    transform: rotate(180deg);
+  }
+}
+
+.Seeds2 {
+  @extend .Seeds1;
+  left: unset;
+  right: 25%;
+}
+
+.BreadBottom {
+  height: 60px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
+  background-color: bc("bread");
+}
+
+.Meat {
+  height: 50px;
+  border-radius: 10px;
+
+  background-color: bc("meat");
+}
+
+.Salad {
+  height: 30px;
+  border-radius: 20px;
+
+  background-color: bc("salad");
+}
+
+.Cheese {
+  height: 10px;
+
+  background-color: bc("cheese");
+}
+
+.Bacon {
+  height: 20px;
+  border-radius: 5px;
+
+  background-color: bc("bacon");
+}
+
+.Meat,
+.Salad,
+.Cheese,
+.Bacon {
+  margin-bottom: space(0.5);
+}

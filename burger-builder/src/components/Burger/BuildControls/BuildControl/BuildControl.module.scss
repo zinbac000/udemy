@@ -1,0 +1,26 @@
+@import "../../../../shared/scss/foundation";
+
+.BuildControl {
+  @include flex($justifyContent: center);
+  margin-bottom: space(1);
+
+  text-transform: uppercase;
+  font-weight: fw("bold");
+
+  div {
+    min-width: 150px;
+  }
+
+  button {
+    @include button($fs: "title1", $fw: "bold", $color: "white", $bgColor: "meat", $py: 0.5, $px: 1, $bgHover: "bacon");
+    border-radius: 5px;
+    margin-right: space(1);
+
+    cursor: pointer;
+    &.BuildControl__Disabled {
+      background-color: grey;
+
+      cursor: not-allowed;
+    }
+  }
+}

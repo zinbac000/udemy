@@ -1,0 +1,26 @@
+.Logo {
+  //   align-self: center;
+  //   width: 100px;
+  //   margin-bottom: 32px;
+
+  //   img {
+  //     max-width: 100%;
+  //     height: auto;
+  //     display: block;
+  //   }
+
+  //   @media screen and (min-width: 576px) {
+  //     width: 50px;
+  //     margin-bottom: 0;
+  //     overflow: hidden;
+  //     border-radius: 10px;
+  //   }
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+
+  img {
+    height: 100%;
+    display: block;
+  }
+}

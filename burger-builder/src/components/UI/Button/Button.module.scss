@@ -1,0 +1,28 @@
+.Button {
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+
+  background-color: #eee;
+
+  cursor: pointer;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+  &:disabled {
+    background-color: gainsboro;
+    cursor: not-allowed;
+  }
+
+  &.Danger {
+    background-color: #944317;
+    color: #ffffff;
+  }
+
+  &.Success {
+    background-color: #5c9210;
+    color: #ffffff;
+  }
+}
