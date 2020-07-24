@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
 
 import classes from "./Layout.module.scss";
-import Toolbar from "../Navigation/Toolbar/Toolbar";
-import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
+import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import SideDrawer from "../../components/Navigation/SideDrawer/SideDrawer";
 
 export default function Layout(props) {
   const [showDrawer, setShowDrawer] = useState(false);
