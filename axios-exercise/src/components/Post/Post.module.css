@@ -1,0 +1,44 @@
+.Post {
+  position: relative;
+
+  padding: 15px 15px 20px;
+
+  border: 1px dashed #96bb7c;
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.Post h5 {
+  margin: 0;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+
+  color: #96bb7c;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  height: 44px;
+  line-height: 22px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.Post p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
+
+  color: #857b7b;
+  font-size: 14px;
+}
+
+.Post span {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+}

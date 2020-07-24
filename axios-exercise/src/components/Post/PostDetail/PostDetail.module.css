@@ -1,0 +1,34 @@
+.PostDetail {
+  margin-top: 15px;
+  padding-bottom: 15px;
+}
+
+.PostDetail__Content {
+  margin: 0 15px;
+  padding: 15px;
+
+  border: 1px dashed #96bb7c;
+  border-radius: 5px;
+}
+
+.PostDetail__User {
+  display: flex;
+  align-items: center;
+}
+
+.PostDetail__User img {
+  border-radius: 50%;
+  width: 40px;
+
+  margin-right: 10px;
+}
+
+.PostDetail__User span {
+  font-weight: 500;
+}
+
+.PostDetail__Content h3 {
+  font-size: 1.5rem;
+
+  color: #96bb7c;
+}

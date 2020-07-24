@@ -1,0 +1,35 @@
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+.section {
+  background-color: #f5f1da;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+  position: relative;
+
+  display: inline-block;
+  padding: 5px 10px;
+
+  font-size: 1.2rem;
+
+  color: #f5f1da;
+  background-color: #96bb7c;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  transform: translateX(-7px);
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: -7px;
+  border-width: 7px;
+  border-color: transparent #96bb7c transparent transparent;
+  border-style: solid;
+}

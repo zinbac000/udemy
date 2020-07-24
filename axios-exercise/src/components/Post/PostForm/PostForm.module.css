@@ -1,0 +1,44 @@
+form {
+  border: 1px dashed #96bb7c;
+  border-radius: 5px;
+
+  padding: 15px;
+}
+
+.FormGroup {
+  position: relative;
+
+  margin-bottom: 15px;
+}
+
+.FormGroup label {
+  color: #96bb7c;
+
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.FormControl {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+
+  border: none;
+
+  resize: vertical;
+
+  outline: none;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  padding: 5px 10px;
+
+  font-weight: bold;
+
+  color: #f5f1da;
+  background-color: #96bb7c;
+}
