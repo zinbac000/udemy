@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 import classes from "./PostForm.module.css";
 
@@ -9,22 +10,16 @@ export default class PostForm extends Component {
     body: ""
   };
 
-  handleTitleChange = (event) => {
+  handleInputChange = (event) => {
     this.setState({
-      title: event.target.value
+      [event.target.id]: event.target.value
     });
   };
 
-  handleContentChange = (event) => {
-    this.setState({
-      body: event.target.value
-    });
-  };
-
-  handleAuthorChange = (event) => {
-    this.setState({
-      author: event.target.value
-    });
+  handleCreatePost = (event) => {
+    event.preventDefault();
+    const { author, title, body } = this.state;
+    axios.post("https://jsonplaceholder.typicode.com/posts", { author, title, body }).then((res) => console.log(res));
   };
 
   render() {
@@ -35,20 +30,20 @@ export default class PostForm extends Component {
           <form>
             <div className={classes.FormGroup}>
               <label htmlFor="title">Title</label>
-              <input type="text" id="title" className={classes.FormControl} value={this.state.title} onChange={this.handleTitleChange} />
+              <input type="text" id="title" className={classes.FormControl} value={this.state.title} onChange={this.handleInputChange} />
             </div>
             <div className={classes.FormGroup}>
-              <label htmlFor="content">Content</label>
-              <textarea id="content" className={classes.FormControl} value={this.state.body} onChange={this.handleContentChange} />
+              <label htmlFor="body">Content</label>
+              <textarea id="body" className={classes.FormControl} value={this.state.body} onChange={this.handleInputChange} />
             </div>
             <div className={classes.FormGroup}>
               <label htmlFor="author">Author</label>
-              <select className={classes.FormControl} id="author" value={this.state.author} onChange={this.handleAuthorChange}>
+              <select className={classes.FormControl} id="author" value={this.state.author} onChange={this.handleInputChange}>
                 <option value="Max">Max</option>
                 <option value="James">James</option>
               </select>
             </div>
-            <button>Submit</button>
+            <button onClick={this.handleCreatePost}>Submit</button>
           </form>
         </div>
       </div>

@@ -4,7 +4,6 @@ import axios from "axios";
 import classes from "./PostDetail.module.css";
 
 function PostDetail(props) {
-  console.log("[PostDetail] rendering...");
   let { postId } = props;
   let postContent = (
     <div className={classes.PostDetail__Content} style={{ textAlign: "center" }}>
