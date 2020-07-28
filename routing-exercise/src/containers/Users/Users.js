@@ -2,7 +2,7 @@ import React from "react";
 
 import classes from "./Users.module.css";
 
-export default function Users() {
+export default function Users(props) {
   return (
     <section className={classes.Users}>
       <h3>User List</h3>

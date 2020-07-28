@@ -1,27 +1,30 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/Header/Header";
 import Welcome from "./components/Welcome/Welcome";
 import NotFound from "./components/NotFound/NotFound";
-import Users from "./containers/Users/Users";
-import Courses from "./containers/Courses/Courses";
+
+const Users = React.lazy(() => import("./containers/Users/Users"));
+const Courses = React.lazy(() => import("./containers/Courses/Courses"));
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Welcome} />
-          <Route path="/users" component={Users} />
-          <Route path="/courses" component={Courses} />
-          <Redirect exact from="/all-courses" to="/courses" />
-          <Route component={NotFound} />
-        </Switch>
-      </div>
-    </BrowserRouter>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Welcome} />
+            <Route path="/users" render={(props) => <Users {...props} />} />
+            <Route path="/courses" render={(props) => <Courses {...props} />} />
+            <Redirect exact from="/all-courses" to="/courses" />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </Suspense>
   );
 }
 
