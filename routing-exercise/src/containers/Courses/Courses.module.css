@@ -1,0 +1,52 @@
+.Courses {
+  padding: 15px;
+}
+
+.Courses h3 {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+
+  border-bottom: 4px solid currentColor;
+}
+
+.CoursesWrapper {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.CoursesItem {
+  padding: 15px;
+
+  display: flex;
+}
+
+.CoursesItem img {
+  width: 100px;
+
+  margin-right: 15px;
+}
+
+.CoursesContent h5 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.CoursesContent p {
+  margin: 5px 0;
+
+  font-size: 14px;
+
+  color: #888888;
+}
+
+.CoursesContent button {
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+
+  background-color: #93b5e1;
+  color: #ffe4e4;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}

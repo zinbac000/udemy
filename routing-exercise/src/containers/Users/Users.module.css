@@ -1,0 +1,63 @@
+.Users {
+  padding: 15px;
+}
+
+.Users h3 {
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+
+  border-bottom: 3px solid currentColor;
+}
+
+.Users__Wrapper {
+  margin-bottom: 15px;
+}
+
+.Users__Wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.Users__Item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Users__Item img {
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.Users__Item p {
+  flex-grow: 1;
+
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.Users__Item span {
+  display: inline-block;
+  min-width: 70px;
+  padding: 5px 10px;
+
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+
+  background-color: grey;
+  color: #ffe4e4;
+
+  border-radius: 200px;
+}
+
+span.StudentUser {
+  background-color: #2667ff;
+  box-shadow: 0 0 4px #2667ff, 0 0 8px #2667ff;
+}
+
+span.AdminUser {
+  background-color: #3b28cc;
+  box-shadow: 0 0 4px #3b28cc, 0 0 8px #3b28cc;
+}

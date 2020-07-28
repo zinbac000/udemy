@@ -1,0 +1,17 @@
+.NavigationItem a {
+  padding: 7px 15px;
+  font-weight: bold;
+
+  font-size: 18px;
+
+  color: #93b5e1;
+
+  transition: all 0.3s;
+}
+
+.NavigationItem a.active,
+.NavigationItem a:active,
+.NavigationItem a:hover {
+  background-color: #93b5e1;
+  color: #ffe4e4;
+}
