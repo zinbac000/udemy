@@ -16,7 +16,7 @@ const Modal = (props) => {
 };
 
 const propsAreEqual = (prevProps, nextProps) => {
-  return nextProps.show === prevProps.show;
+  return nextProps.show === prevProps.show && nextProps.children?.type === prevProps.children?.type;
 };
 
 Modal.propTypes = {
