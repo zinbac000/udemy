@@ -1,0 +1,13 @@
+.Orders {
+  display: flex;
+  width: 80%;
+  margin: auto;
+  flex-wrap: wrap;
+  padding: 15px;
+}
+
+@media screen and (min-width: 1200px) {
+  .Orders {
+    width: 1000px;
+  }
+}

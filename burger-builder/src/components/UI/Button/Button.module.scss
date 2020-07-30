@@ -12,7 +12,7 @@
   }
 
   &:disabled {
-    background-color: gainsboro;
+    background-color: gainsboro !important;
     cursor: not-allowed;
   }
 

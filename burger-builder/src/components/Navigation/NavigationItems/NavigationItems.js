@@ -6,10 +6,10 @@ import NavigationItem from "./NavigationItem/NavigationItem";
 export default function NavigationItems(props) {
   return (
     <ul className={classes.NavigationItems}>
-      <NavigationItem active link="#">
+      <NavigationItem exact link="/">
         Burger Builder
       </NavigationItem>
-      <NavigationItem link="#">Order</NavigationItem>
+      <NavigationItem link="/orders">Orders</NavigationItem>
     </ul>
   );
 }

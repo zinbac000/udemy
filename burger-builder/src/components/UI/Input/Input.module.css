@@ -1,0 +1,29 @@
+.Input {
+  margin-bottom: 15px;
+
+  text-align: left;
+}
+
+.Input label {
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.InputElement {
+  display: block;
+  width: 100%;
+  padding: 7px 15px;
+  border: 2px solid #c98428;
+  border-radius: 10px;
+
+  outline: none;
+
+  background-color: #ffffff;
+}
+
+.Invalid {
+  border-color: red;
+  background-color: salmon;
+}
