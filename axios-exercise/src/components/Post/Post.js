@@ -1,12 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import classes from "./Post.module.css";
 
-export default function Post(props) {
-  const { author, title, body } = props.post;
+export default function Post({ id, author, title, body, clicked }) {
   return (
-    <article className={classes.Post} onClick={() => props.clicked(props.post.id)}>
+    <article className={classes.Post} onClick={() => clicked(id)}>
       <h5>{title}</h5>
       <p>{body}</p>
       <span>
@@ -15,8 +13,3 @@ export default function Post(props) {
     </article>
   );
 }
-
-Post.propTypes = {
-  post: PropTypes.object.isRequired,
-  clicked: PropTypes.func
-};

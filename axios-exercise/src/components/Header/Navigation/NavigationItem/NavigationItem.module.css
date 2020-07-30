@@ -1,0 +1,16 @@
+.NavigationItem a {
+  text-decoration: none;
+  color: #f5f1da;
+
+  font-weight: bold;
+  font-size: 20px;
+
+  display: inline-block;
+  padding: 7px 15px;
+}
+
+.NavigationItem a.active,
+.NavigationItem a:hover,
+.NavigationItem a:active {
+  background-color: #405333;
+}

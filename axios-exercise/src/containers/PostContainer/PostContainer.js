@@ -1,38 +1,32 @@
-import React, { Component, Fragment } from "react";
-import axios from "axios";
-
-import Posts from "../../components/Post/Posts/Posts";
-import PostForm from "../../components/Post/PostForm/PostForm";
-import PostDetail from "../../components/Post/PostDetail/PostDetail";
+import React, { Component, Fragment, Suspense } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import Posts from "./Posts/Posts";
+import Header from "../../components/Header/Header";
+// import asyncComponent from "../../hoc/asyncComponent/asyncComponent";
+const LazyPostForm = React.lazy(() => import("../PostContainer/PostForm/PostForm"));
 export default class PostContainer extends Component {
   state = {
-    posts: [],
-    selectedPostId: null
+    auth: true
   };
-
-  componentDidMount() {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((res) => res.data.slice(0, 4).map((post) => ({ ...post, author: "James Bond" })))
-      .then((posts) => {
-        this.setState({
-          posts: posts
-        });
-      });
-  }
-
-  handleSelectPost = (postId) => {
-    this.setState({
-      selectedPostId: postId
-    });
-  };
-
   render() {
     return (
       <Fragment>
-        <Posts posts={this.state.posts} postSelected={this.handleSelectPost} />
-        <PostDetail postId={this.state.selectedPostId} />
-        <PostForm />
+        <Header />
+        <Switch>
+          {this.state.auth ? (
+            <Route
+              path="/new-post"
+              render={() => (
+                <Suspense fallback={() => <div>Loading post form...</div>}>
+                  <LazyPostForm />
+                </Suspense>
+              )}
+            />
+          ) : null}
+          <Route path="/posts" component={Posts} />
+          <Redirect exact from="/" to="/posts" />
+          <Route render={() => <h1>Not found</h1>} />
+        </Switch>
       </Fragment>
     );
   }

@@ -4,7 +4,7 @@ import axios from "axios";
 import classes from "./PostDetail.module.css";
 
 function PostDetail(props) {
-  let { postId } = props;
+  let postId = props.match.params?.id;
   let postContent = (
     <div className={classes.PostDetail__Content} style={{ textAlign: "center" }}>
       Please choose a post.
@@ -13,7 +13,7 @@ function PostDetail(props) {
   const [loadedPost, setLoadedPost] = useState(null);
   useEffect(() => {
     console.log("[PostDetail] load post...");
-    if (postId) {
+    if (postId !== undefined) {
       axios
         .get("https://jsonplaceholder.typicode.com/posts/" + postId)
         .then((res) => res.data)
@@ -21,14 +21,7 @@ function PostDetail(props) {
     }
   }, [postId]);
 
-  if (postId && (!loadedPost || loadedPost.id !== postId)) {
-    postContent = (
-      <div className={classes.PostDetail__Content} style={{ textAlign: "center" }}>
-        Loading...
-      </div>
-    );
-  }
-  if (loadedPost && loadedPost.id === postId) {
+  if (loadedPost) {
     postContent = (
       <div className={classes.PostDetail__Content}>
         <div className={classes.PostDetail__User}>
@@ -39,7 +32,14 @@ function PostDetail(props) {
         <p>{loadedPost.body}</p>
       </div>
     );
+  } else {
+    postContent = (
+      <div className={classes.PostDetail__Content} style={{ textAlign: "center" }}>
+        Loading...
+      </div>
+    );
   }
+
   return (
     <div className={[classes.PostDetail, "section"].join(" ")}>
       <h1 className="section-title">Post Detail</h1>
@@ -47,7 +47,4 @@ function PostDetail(props) {
     </div>
   );
 }
-
-const areEqual = (prevProps, nextProps) => prevProps.postId === nextProps.postId;
-
-export default React.memo(PostDetail, areEqual);
+export default React.memo(PostDetail);
