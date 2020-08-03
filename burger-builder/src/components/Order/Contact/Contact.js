@@ -6,8 +6,11 @@ import Button from "../../UI/Button/Button";
 import axios from "../../../axios-orders";
 import Spinner from "../../UI/Spinner/Spinner";
 import Input from "../../UI/Input/Input";
+import withErrorHandler from "../../../hoc/withErrorHandler/withErrorHandler";
 
 import { connect } from "react-redux";
+import * as actions from "../../../store/actions/index";
+import { Redirect } from "react-router-dom";
 
 class Contact extends Component {
   state = {
@@ -94,15 +97,11 @@ class Contact extends Component {
         valid: true
       }
     },
-    loading: false,
     formValid: false
   };
 
   handleSubmitOrder = (event) => {
     event.preventDefault();
-    this.setState({
-      loading: true
-    });
 
     const formData = {};
     Object.entries(this.state.contactForm).forEach(([fieldKey, fieldValue]) => {
@@ -123,17 +122,7 @@ class Contact extends Component {
       deliveryMethod: formData.deliveryMethod
     };
 
-    axios
-      .post("/orders.json", order)
-      .then((res) => {
-        this.setState({
-          loading: false
-        });
-        this.props.history.push(`/`);
-      })
-      .catch((err) => {
-        this.setState({ loading: false });
-      });
+    this.props.submitOrder(order);
   };
 
   checkValidity(value, rules) {
@@ -200,11 +189,12 @@ class Contact extends Component {
       </form>
     );
 
-    if (this.state.loading) {
+    if (this.props.submitting) {
       form = <Spinner />;
     }
     return (
       <section className={classes.Contact}>
+        {this.props.purchased && <Redirect to="/" />}
         <h3 style={{ marginBottom: "15px" }}>Enter you contact</h3>
         {form}
       </section>
@@ -214,7 +204,13 @@ class Contact extends Component {
 
 const mapStateToProps = (state) => ({
   ingredients: state.burgerBuilderReducer.ingredients,
-  totalPrice: state.burgerBuilderReducer.totalPrice
+  totalPrice: state.burgerBuilderReducer.totalPrice,
+  submitting: state.orderReducer.submitting,
+  purchased: state.orderReducer.purchased
 });
 
-export default connect(mapStateToProps)(Contact);
+const mapDispatchToProps = (dispatch) => ({
+  submitOrder: (order) => dispatch(actions.submitOrder(order))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Contact, axios));

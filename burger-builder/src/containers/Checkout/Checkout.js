@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import classes from "./Checkout.module.css";
 import CheckoutSummary from "../../components/Order/CheckoutSummary/CheckoutSummary";
-import Spinner from "../../components/UI/Spinner/Spinner";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Contact from "../../components/Order/Contact/Contact";
 import { connect } from "react-redux";
 
@@ -17,7 +16,7 @@ class Checkout extends Component {
   };
 
   render() {
-    let checkoutSummary = <Spinner />;
+    let checkoutSummary = <Redirect to="/" />;
 
     if (this.props.ingredients) {
       checkoutSummary = <CheckoutSummary ingredients={this.props.ingredients} onCancel={this.handleCancel} onContinue={this.handleContinue} />;
