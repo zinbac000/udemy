@@ -3,7 +3,8 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   ingredients: null,
   totalPrice: 4,
-  error: false
+  error: false,
+  building: false
 };
 
 const INGREDIENT_PRICES = {
@@ -25,13 +26,13 @@ const burgerBuilderReducer = (state = initialState, action) => {
 
       const newPrice = state.totalPrice + INGREDIENT_PRICES[ingredientType] * increment;
 
-      return { ...state, ingredients: newIngredients, totalPrice: newPrice };
+      return { ...state, ingredients: newIngredients, totalPrice: newPrice, building: true };
 
     case actionTypes.FETCH_INGREDIENTS_SUCCESS:
-      return { ...state, ingredients: action.ingredients, error: false, totalPrice: 4 };
+      return { ...state, ingredients: action.ingredients, error: false, totalPrice: 4, building: false };
 
     case actionTypes.FETCH_INGREDIENTS_FAIL:
-      return { ...state, error: true };
+      return { ...state, error: true, building: false };
 
     default:
       return state;

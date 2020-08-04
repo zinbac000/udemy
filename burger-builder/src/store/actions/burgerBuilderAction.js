@@ -11,11 +11,20 @@ export const modifyIngredients = (ingredientType, increment) => {
   };
 };
 
+const fetchIngredientsSuccess = (ingredients) => ({
+  type: actionTypes.FETCH_INGREDIENTS_SUCCESS,
+  ingredients
+});
+
+const fetchIngredientsFail = () => ({
+  type: actionTypes.FETCH_INGREDIENTS_FAIL
+});
+
 export const fetchIngredients = () => {
   return (dispatch) => {
     axios
       .get("/ingredients.json")
-      .then((res) => dispatch({ type: actionTypes.FETCH_INGREDIENTS_SUCCESS, ingredients: res.data }))
-      .catch((error) => dispatch({ type: actionTypes.FETCH_INGREDIENTS_FAIL }));
+      .then((res) => dispatch(fetchIngredientsSuccess(res.data)))
+      .catch((error) => dispatch(fetchIngredientsFail()));
   };
 };

@@ -1,5 +1,5 @@
 .Order {
-  flex-basis: 25%;
+  flex-basis: 100%;
   padding: 0 15px;
   margin-bottom: 30px;
 }
@@ -48,4 +48,22 @@
   bottom: 0;
   left: -20px;
   border-bottom: 2px solid #fff;
+}
+
+@media screen and (min-width: 576px) {
+  .Order {
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .Order {
+    flex-basis: 33.33%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .Order {
+    flex-basis: 25%;
+  }
 }

@@ -12,20 +12,33 @@ import * as actions from "../../store/actions/index";
 
 class Orders extends Component {
   componentDidMount() {
-    this.props.fetchOrders();
+    this.props.fetchOrders(this.props.token);
   }
 
   render() {
-    let orders = <Spinner />;
+    let orders = <p>There are no orders yet.</p>;
+
+    if (this.props.error) {
+      orders = <p>Orders could not be fetched.</p>;
+    }
+
     if (this.props.orders) {
       orders = this.props.orders.map((order, index) => <Order key={order.id} ingredients={order.ingredients} price={order.price} />);
     }
+
+    if (this.props.fetching) {
+      orders = <Spinner />;
+    }
+
     return <section className={classes.Orders}>{orders}</section>;
   }
 }
 
 const mapStateToProps = (state) => ({
-  orders: state.orderReducer.orders
+  orders: state.orderReducer.orders,
+  fetching: state.orderReducer.fetching,
+  error: state.orderReducer.error,
+  token: state.authReducer.idToken
 });
 
 const mapDispatchToProps = {

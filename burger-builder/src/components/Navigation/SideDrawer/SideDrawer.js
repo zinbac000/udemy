@@ -16,7 +16,7 @@ export default function SideDrawer(props) {
         <div className={classes.Logo}>
           <Logo logo={logo} />
         </div>
-        <NavigationItems />
+        <NavigationItems drawerClosed={props.drawerClosed} />
       </div>
     </Fragment>
   );

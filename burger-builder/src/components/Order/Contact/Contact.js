@@ -122,7 +122,7 @@ class Contact extends Component {
       deliveryMethod: formData.deliveryMethod
     };
 
-    this.props.submitOrder(order);
+    this.props.submitOrder(order, this.props.token);
   };
 
   checkValidity(value, rules) {
@@ -206,11 +206,12 @@ const mapStateToProps = (state) => ({
   ingredients: state.burgerBuilderReducer.ingredients,
   totalPrice: state.burgerBuilderReducer.totalPrice,
   submitting: state.orderReducer.submitting,
-  purchased: state.orderReducer.purchased
+  purchased: state.orderReducer.purchased,
+  token: state.authReducer.idToken
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  submitOrder: (order) => dispatch(actions.submitOrder(order))
+  submitOrder: (order, token) => dispatch(actions.submitOrder(order, token))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Contact, axios));
