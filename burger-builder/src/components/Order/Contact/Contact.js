@@ -119,7 +119,8 @@ class Contact extends Component {
         },
         email: formData.email
       },
-      deliveryMethod: formData.deliveryMethod
+      deliveryMethod: formData.deliveryMethod,
+      userId: this.props.userId
     };
 
     this.props.submitOrder(order, this.props.token);
@@ -159,7 +160,6 @@ class Contact extends Component {
     updatedContactForm[inputIdentifier] = updatedFormElement;
 
     const formIsValid = Object.values(updatedContactForm).reduce((formValid, fieldObject) => formValid && fieldObject.valid, true);
-    console.log(formIsValid);
     this.setState({
       contactForm: updatedContactForm,
       formValid: formIsValid
@@ -207,7 +207,8 @@ const mapStateToProps = (state) => ({
   totalPrice: state.burgerBuilderReducer.totalPrice,
   submitting: state.orderReducer.submitting,
   purchased: state.orderReducer.purchased,
-  token: state.authReducer.idToken
+  token: state.authReducer.idToken,
+  userId: state.authReducer.userId
 });
 
 const mapDispatchToProps = (dispatch) => ({

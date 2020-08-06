@@ -2,13 +2,15 @@ import React, { useRef, useEffect } from "react";
 
 import classes from "./NavigationItems.module.scss";
 import NavigationItem from "./NavigationItem/NavigationItem";
-import { connect } from "react-redux";
 
 function NavigationItems(props) {
   let navRef = useRef();
   const { isAuthenticated } = props;
 
   useEffect(() => {
+    if (!props.drawerClosed) {
+      return;
+    }
     let navEl = navRef.current;
 
     const handleNavLinkClick = () => {
@@ -42,8 +44,4 @@ function NavigationItems(props) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.authReducer.idToken !== null
-});
-
-export default connect(mapStateToProps)(NavigationItems);
+export default NavigationItems;

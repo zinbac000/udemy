@@ -39,10 +39,11 @@ const fetchOrderFail = () => ({
   type: actionTypes.FETCH_ORDERS_FAIL
 });
 
-export const fetchOrders = (token) => (dispatch) => {
+export const fetchOrders = (token, userId) => (dispatch) => {
   dispatch(fetchOrderStart());
+  const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
   axios
-    .get(`/orders.json?auth=${token}`)
+    .get(`/orders.json${queryParams}`)
     .then((res) => res.data)
     .then((orders) => {
       const transformedOrders = orders && Object.keys(orders).map((key) => ({ ...orders[key], id: key }));

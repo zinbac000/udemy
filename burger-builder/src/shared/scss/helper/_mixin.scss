@@ -19,7 +19,7 @@
 
   background-color: bc($bgColor);
 
-  @if $borderSize != null && $border != null {
+  @if $borderSize != null and $border != null {
     border: $borderSize solid bc($border);
   }
   padding: space($py) space($px);

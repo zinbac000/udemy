@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Button from "../../UI/Button/Button";
 
 export default function OrderSummary(props) {
-  console.log("[OrderSummary] rendering...");
   const ingredientSummary = Object.keys(props.ingredients).map((key) => {
     return (
       <li key={key}>

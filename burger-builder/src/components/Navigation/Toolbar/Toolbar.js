@@ -7,7 +7,9 @@ import logo from "../../../assets/img/burger-logo.jpg";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import DrawerToggler from "../SideDrawer/DrawerToggler/DrawerToggler";
 
-export default function Toolbar(props) {
+import { connect } from "react-redux";
+
+function Toolbar(props) {
   return (
     <header className={classes.Toolbar}>
       <DrawerToggler clicked={props.drawerShown} />
@@ -15,7 +17,7 @@ export default function Toolbar(props) {
         <Logo logo={logo} />
       </div>
       <nav className={classes.DesktopOnly}>
-        <NavigationItems />
+        <NavigationItems isAuthenticated={props.isAuthenticated} />
       </nav>
     </header>
   );
@@ -24,3 +26,9 @@ export default function Toolbar(props) {
 Toolbar.propTypes = {
   drawerShown: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.authReducer.idToken !== null
+});
+
+export default connect(mapStateToProps)(Toolbar);

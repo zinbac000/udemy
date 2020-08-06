@@ -12,7 +12,7 @@ import * as actions from "../../store/actions/index";
 
 class Orders extends Component {
   componentDidMount() {
-    this.props.fetchOrders(this.props.token);
+    this.props.fetchOrders(this.props.token, this.props.userId);
   }
 
   render() {
@@ -22,7 +22,7 @@ class Orders extends Component {
       orders = <p>Orders could not be fetched.</p>;
     }
 
-    if (this.props.orders) {
+    if (this.props.orders && this.props.orders.length > 0) {
       orders = this.props.orders.map((order, index) => <Order key={order.id} ingredients={order.ingredients} price={order.price} />);
     }
 
@@ -38,7 +38,8 @@ const mapStateToProps = (state) => ({
   orders: state.orderReducer.orders,
   fetching: state.orderReducer.fetching,
   error: state.orderReducer.error,
-  token: state.authReducer.idToken
+  token: state.authReducer.idToken,
+  userId: state.authReducer.userId
 });
 
 const mapDispatchToProps = {
