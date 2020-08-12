@@ -1,53 +1,34 @@
 import * as actionTypes from "./actionTypes";
 
-import axios from "../../axios-orders";
-
-const submitOrderStart = () => ({
-  type: actionTypes.SUBMIT_ORDER_START
-});
-
-const submitOrderSuccess = () => ({
+export const submitOrderSuccess = () => ({
   type: actionTypes.SUBMIT_ORDER_SUCCESS
 });
 
-const submitOrderFail = () => ({
+export const submitOrderFail = () => ({
   type: actionTypes.SUBMIT_ORDER_FAIL
 });
 
-export const submitOrder = (newOrder, token) => (dispatch) => {
-  dispatch(submitOrderStart());
-  axios
-    .post(`/orders.json?auth=${token}`, newOrder)
-    .then((res) => dispatch(submitOrderSuccess()))
-    .catch((err) => dispatch(submitOrderFail()));
-};
+export const submitOrder = (newOrder, token) => ({
+  type: actionTypes.SUBMIT_ORDER_START,
+  newOrder,
+  token
+});
 
 export const initPurchase = () => ({
   type: actionTypes.INIT_PURCHASE
 });
 
-const fetchOrderStart = () => ({
-  type: actionTypes.FETCH_ORDERS_START
-});
-
-const fetchOrderSuccess = (orders) => ({
+export const fetchOrderSuccess = (orders) => ({
   type: actionTypes.FETCH_ORDERS_SUCCESS,
   orders
 });
 
-const fetchOrderFail = () => ({
+export const fetchOrderFail = () => ({
   type: actionTypes.FETCH_ORDERS_FAIL
 });
 
-export const fetchOrders = (token, userId) => (dispatch) => {
-  dispatch(fetchOrderStart());
-  const queryParams = `?auth=${token}&orderBy="userId"&equalTo="${userId}"`;
-  axios
-    .get(`/orders.json${queryParams}`)
-    .then((res) => res.data)
-    .then((orders) => {
-      const transformedOrders = orders && Object.keys(orders).map((key) => ({ ...orders[key], id: key }));
-      dispatch(fetchOrderSuccess(transformedOrders));
-    })
-    .catch((err) => dispatch(fetchOrderFail()));
-};
+export const fetchOrders = (token, userId) => ({
+  type: actionTypes.FETCH_ORDERS_START,
+  token,
+  userId
+});
